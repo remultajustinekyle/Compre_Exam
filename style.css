@@ -1,0 +1,255 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+:root {
+    --bg: #eef2f7;
+    --text: #333;
+    --primary: #2a5298;
+    --secondary: #1e3c72;
+    --card: #ffffff;
+}
+
+#dark-toggle:checked ~ * {
+    --bg: #121212;
+    --text: #f1f1f1;
+    --primary: #90caf9;
+    --secondary: #0d47a1;
+    --card: #373636;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    animation: fadeIn 1s ease;
+}
+
+#dark-toggle {
+    display: none;
+}
+
+.toggle-label {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--card);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.profile-img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Typing Cursor */
+.typing::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Buttons */
+.btn-group {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    background: white;
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.ripple::after {
+    content: "";
+    position: absolute;
+    background: rgba(42, 82, 152, 0.3);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    transform: skewX(-20deg);
+    transition: left 0.5s;
+}
+
+.ripple:hover::after {
+    left: 100%;
+}
+
+nav {
+    background: var(--card);
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    border-left: 6px solid var(--primary);
+    padding-left: 10px;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.box {
+    background: var(--card);
+    padding: 18px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-6px);
+    background: var(--primary);
+    color: white;
+}
+
+
+.card {
+    background: var(--card);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+footer {
+    background: var(--secondary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.progress {
+    width: 100%;
+    height: 12px;
+    background: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    border-radius: 10px;
+    transition: width 1.5s ease;
+}
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white; /* for footer dark background */
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
