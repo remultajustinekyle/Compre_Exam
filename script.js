@@ -1,4 +1,4 @@
-// Typing Animation
+
 const phrases = [
     "Justine Kyle Remulta",
     "Aspiring Web Developer",
@@ -30,7 +30,7 @@ function deletePhrase() {
 }
 typePhrase();
 
-// Scroll Reveal
+
 const reveals = document.querySelectorAll(".reveal");
 function revealOnScroll() {
     reveals.forEach(el => {
@@ -42,7 +42,7 @@ function revealOnScroll() {
 }
 window.addEventListener("scroll", revealOnScroll);
 
-// Back-to-Top Button
+
 const backToTop = document.createElement("button");
 backToTop.id = "back-to-top";
 backToTop.innerHTML = "<i class='fas fa-arrow-up'></i>";

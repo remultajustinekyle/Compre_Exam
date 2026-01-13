@@ -1,4 +1,4 @@
-/* --- RESET & BASE --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
 :root {
     --bg: #b0bdce;
     --text: #333;
-    --primary: #4e54c8;   /* modern gradient colors */
+    --primary: #4e54c8;   
     --secondary: #8f94fb;
     --card: #ffffff;
 }
@@ -29,7 +29,7 @@ body {
     transition: background 0.4s, color 0.4s;
 }
 
-/* --- DARK MODE TOGGLE --- */
+
 #dark-toggle {
     display: none;
 }
@@ -139,7 +139,7 @@ header {
     left: 100%;
 }
 
-/* --- NAVIGATION --- */
+
 nav {
     background: var(--card);
     text-align: center;
@@ -156,7 +156,7 @@ nav a {
 }
 nav a:hover { color: var(--secondary); }
 
-/* --- SECTIONS --- */
+
 section {
     max-width: 1000px;
     margin: auto;
@@ -173,7 +173,7 @@ section {
     transform: translateY(0);
 }
 
-/* --- HEADINGS --- */
+
 h2 {
     color: var(--primary);
     margin-bottom: 25px;
@@ -182,7 +182,7 @@ h2 {
     font-size: 28px;
 }
 
-/* --- SKILLS GRID --- */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -202,7 +202,7 @@ h2 {
     color: white;
 }
 
-/* --- PROJECT CARDS --- */
+
 .card {
     background: var(--card);
     padding: 30px;
@@ -216,7 +216,7 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-/* --- FOOTER --- */
+
 footer {
     background: var(--secondary);
     color: rgb(248, 242, 242);
