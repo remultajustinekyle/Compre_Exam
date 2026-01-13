@@ -1,49 +1,57 @@
-/* Typing Animation */
-const text = "Justine Kyle Remulta";
-let index = 0;
-const speed = 120;
+// Typing Animation
+const phrases = [
+    "Justine Kyle Remulta",
+    "Aspiring Web Developer",
+    "Future Intern"
+];
+let typingIndex = 0;
+let charIndex = 0;
 const typingElement = document.querySelector(".typing");
 
-function typeEffect() {
-    if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, speed);
+function typePhrase() {
+    if (charIndex < phrases[typingIndex].length) {
+        typingElement.textContent += phrases[typingIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typePhrase, 120);
+    } else {
+        setTimeout(deletePhrase, 1000);
     }
 }
-typeEffect();
 
-/* Scroll Reveal */
+function deletePhrase() {
+    if (charIndex > 0) {
+        typingElement.textContent = phrases[typingIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(deletePhrase, 60);
+    } else {
+        typingIndex = (typingIndex + 1) % phrases.length;
+        setTimeout(typePhrase, 200);
+    }
+}
+typePhrase();
+
+// Scroll Reveal
 const reveals = document.querySelectorAll(".reveal");
-
 function revealOnScroll() {
-    reveals.forEach(section => {
-        const windowHeight = window.innerHeight;
-        const revealTop = section.getBoundingClientRect().top;
-        const revealPoint = 100;
-
-        if (revealTop < windowHeight - revealPoint) {
-            section.classList.add("active");
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100) {
+            el.classList.add("active");
         }
     });
 }
-
 window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-/* Skill Progress Animation */
-const progressBars = document.querySelectorAll(".progress-bar");
 
-function animateSkills() {
-    progressBars.forEach(bar => {
-        const barTop = bar.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+// Back-to-Top Button
+const backToTop = document.createElement("button");
+backToTop.id = "back-to-top";
+backToTop.innerHTML = "<i class='fas fa-arrow-up'></i>";
+document.body.appendChild(backToTop);
 
-        if (barTop < windowHeight - 100) {
-            const value = bar.getAttribute("data-progress");
-            bar.style.width = value + "%";
-        }
-    });
-}
-
-window.addEventListener("scroll", animateSkills);
-animateSkills();
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 300) backToTop.style.display = "flex";
+    else backToTop.style.display = "none";
+});
+backToTop.addEventListener("click", () => {
+    window.scrollTo({top:0, behavior:"smooth"});
+});
